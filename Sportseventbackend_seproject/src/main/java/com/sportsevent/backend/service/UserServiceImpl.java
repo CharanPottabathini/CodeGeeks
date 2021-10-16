@@ -36,5 +36,30 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
+	@Override
+	public boolean registerUser(User user) {
+		String select = "Select count(*) as count FROM user";
+		try {
+			PreparedStatement statement = sportsEventComponent.getConnection().prepareStatement(select);
+			ResultSet rs = statement.executeQuery();
+			int id = 0;
+			if(!rs.next()) {
+				id = rs.getInt(1);
+			}
+			
+			String insertQuery = "INSERT INTO user (id,username,password,email,phone) VALUES (?,?,?,?,?)";
+			PreparedStatement insertStatement = sportsEventComponent.getConnection().prepareStatement(insertQuery);
+			insertStatement.setString(1, String.valueOf(id+1));
+			insertStatement.setString(2, user.getUsername());
+			insertStatement.setString(3, user.getPassword());
+			insertStatement.setString(4, user.getEmail());
+			insertStatement.setString(5, user.getPhone());
+			insertStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;		
+	}
 
 }

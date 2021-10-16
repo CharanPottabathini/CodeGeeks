@@ -6,4 +6,5 @@ public interface UserService {
 	
 	public boolean login(User user);
 	
+	public boolean registerUser(User user);
 }

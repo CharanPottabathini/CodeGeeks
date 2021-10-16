@@ -7,5 +7,5 @@ import com.sportsevent.backend.entity.Event;
 public interface EventService {
 	
 	public List<Event> getEventDetails();
-
+	public List<Event> getUpcomingEventDetails();
 }

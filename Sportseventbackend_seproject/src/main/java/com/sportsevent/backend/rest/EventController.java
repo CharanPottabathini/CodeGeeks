@@ -36,6 +36,9 @@ public class EventController {
 		return ResponseEntity.status(HttpStatus.OK).body(eventService.getEventDetails());
 	}
 
-
+	@GetMapping(value = "/events/upcoming")
+	ResponseEntity<List<Event>> verifyUpcomingEvents(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventService.getUpcomingEventDetails());
+	}
 
 }

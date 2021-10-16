@@ -1,0 +1,11 @@
+id,name,location,time,date,event_type
+1,"Long jump",Chennai,"9:00 - 10:00",2021-10-04,UPCOMING
+10,"100 M Dash",Kolkatta,"11:00 - 12:00",2021-10-06,UPCOMING
+2,"High jump",Chennai,"9:00 - 10:00",2021-10-03,ONGOING
+3,Badminton,Mumbai,"14:00 - 15:00",2021-11-03,UPCOMING
+4,Hockey,Delhi,"10:00 - 11:00",2021-10-03,ONGOING
+5,Squash,Delhi,"10:00 - 11:00",2021-10-04,UPCOMING
+6,"Weight Lifting",Delhi,"9:00 - 10:00",2021-10-04,UPCOMING
+7,Javeline,Mumbai,"9:00 - 10:00",2021-10-04,ONGOING
+8,Tennis,Kolkatta,"9:00 - 10:00",2021-10-05,UPCOMING
+9,Archery,Kolkatta,"11:00 - 12:00",2021-10-05,UPCOMING

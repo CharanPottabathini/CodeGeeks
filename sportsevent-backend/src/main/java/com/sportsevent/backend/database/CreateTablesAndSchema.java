@@ -24,36 +24,36 @@ public class CreateTablesAndSchema {
 			PreparedStatement statement = connection.prepareStatement("CREATE DATABASE sports_event"); 
 			statement.execute();
 			connection.setSchema("sports_event");
-			String createUser = "CREATE TABLE sports_event.user ("+
-					"					id varchar(25),"+
-					"					username varchar(150)," +
+			String createUser = "CREATE TABLE sports_event.user ("+ 
+					"					id varchar(25),"+ 
+					"					username varchar(150)," + 
 					"					password varchar(150)," +
 					"					email varchar(150)," +
 					"					phone varchar(150)," +
-					"					Constraint PK Primary Key(id)"+
+					"					Constraint PK Primary Key(id)"+ 
 					"					)";
 			String createEvent = "CREATE TABLE sports_event.event (" +
-					"					id varchar(25),"+
-					"					name varchar(150)," +
+					"					id varchar(25),"+ 
+					"					name varchar(150)," + 
 					"					location varchar(150)," +
 					"					time varchar(150)," +
 					"					date date," +
 					"					event_type varchar(150)," +
-					"					Constraint PK Primary Key(id)"+
+					"					Constraint PK Primary Key(id)"+ 
 					")";
-			String createParticipants = "CREATE TABLE sports_event.participant (" +
-					"					id varchar(25),"+
-					"					name varchar(150)," +
+			String createParticipants = "CREATE TABLE sports_event.participant (" + 
+					"					id varchar(25),"+ 
+					"					name varchar(150)," + 
 					"					event_id varchar(25)," +
-					"					Constraint PK Primary Key(id),"+
+					"					Constraint PK Primary Key(id),"+ 
 					"					FOREIGN KEY (event_id) REFERENCES sports_event.event(id)"+
 					")";
-			String createMessage = "CREATE TABLE sports_event.message (" +
-					"					id varchar(25),"+
-					"					text varchar(1000)," +
+			String createMessage = "CREATE TABLE sports_event.message (" + 
+					"					id varchar(25),"+ 
+					"					text varchar(1000)," + 
 					"					user_id varchar(25)," +
-					"					time datetime," +
-					"					Constraint PK Primary Key(id),"+
+					"					time varchar(50)," +
+					"					Constraint PK Primary Key(id),"+ 
 					"					FOREIGN KEY (user_id) REFERENCES sports_event.user(id)"+
 					")";
 			connection.prepareStatement(createUser).execute();

@@ -3,8 +3,11 @@ package com.sportsevent.backend.service;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,28 +25,72 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean login(User user) {
-		String select = "Select * from user where username = ? and password = ?";
+	public Map login(User user) {
+		//String select = "Select * from user where username = ? and password = ?";
+		String select="Select * from user WHERE (phone = ? OR email = ?) and PASSWORD = ?";
+		Map<String,Object> resultMap = new HashMap<>();
 		try {
+			
 			PreparedStatement statement = sportsEventComponent.getConnection().prepareStatement(select);
-			statement.setString(1, user.getUsername());
-			statement.setString(2, user.getPassword());
+			statement.setString(1, user.getPhone());
+			statement.setString(2, user.getEmail());
+			statement.setString(3, user.getPassword());
+			System.out.println(statement);
+
 			ResultSet rs = statement.executeQuery();
-			return rs.next() ;
+			if(rs.next()){
+				String userId = rs.getString("id");
+				String userName=rs.getString("username");
+				resultMap.put("loginStatus",true);
+				resultMap.put("userId",userId);
+				resultMap.put("username",userName);
+			return resultMap;
+
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return resultMap;
 	}
 
 	@Override
-	public boolean registerUser(User user) {
+	public Map<String,Object> registerUser(User user) {
+		Map<String,Object> resultMap = new HashMap<>();
 		String select = "Select count(*) as count FROM user";
+		String selectQuery = "Select * FROM user";
+		List<String> userList = new ArrayList<>();
+		List<String> emailList = new ArrayList<>();
+		List<String> phoneList = new ArrayList<>();
 		try {
+			PreparedStatement selectStatement = sportsEventComponent.getConnection().prepareStatement(selectQuery);
+			ResultSet resultset = selectStatement.executeQuery();
+			while(resultset.next()){
+				String username = resultset.getString("username");
+				String email = resultset.getString("email");
+				String phone = resultset.getString("phone");
+				userList.add(username);
+				emailList.add(email);
+				phoneList.add(phone);
+			}
+			if(userList.contains(user.getUsername())){
+				resultMap.put("error","username already exists");
+				resultMap.put("isRegistered",false);
+				return resultMap;
+			}
+			if(emailList.contains(user.getEmail())){
+				resultMap.put("error","Email Id already exists");
+				resultMap.put("isRegistered",false);
+				return resultMap;
+			}
+			if(phoneList.contains(user.getPhone())){
+				resultMap.put("error","Phone Number already exists");
+				resultMap.put("isRegistered",false);
+				return resultMap;
+			}
 			PreparedStatement statement = sportsEventComponent.getConnection().prepareStatement(select);
 			ResultSet rs = statement.executeQuery();
 			int id = 0;
-			if(!rs.next()) {
+			if(rs.next()) {
 				id = rs.getInt(1);
 			}
 			
@@ -55,11 +102,13 @@ public class UserServiceImpl implements UserService{
 			insertStatement.setString(4, user.getEmail());
 			insertStatement.setString(5, user.getPhone());
 			insertStatement.execute();
-			return true;
+			resultMap.put("isRegistered",true);
+			return resultMap;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;		
+		resultMap.put("isRegistered",false);
+		return resultMap;
 	}
 
 }

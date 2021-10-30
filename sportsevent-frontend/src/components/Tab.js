@@ -4,6 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import OngoingEvents from './OngoingEvents';
+import UpcomingEvents from './UpcomingEvents';
+import DiscussionForum from './DiscussionForum';
+import LastTab from './AboutUs';
+import JoinEvent from "./JoinEvent";
+
 
 const styles = theme => ({
   root: {

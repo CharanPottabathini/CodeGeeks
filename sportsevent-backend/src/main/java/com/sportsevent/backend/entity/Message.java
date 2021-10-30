@@ -1,8 +1,7 @@
 package com.sportsevent.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Message {
 	
@@ -10,8 +9,7 @@ public class Message {
 	private String text;
 	private String userId;
 	private String username;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
-	private Date time;
+	private String time;
 	public String getId() {
 		return id;
 	}
@@ -36,10 +34,10 @@ public class Message {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	

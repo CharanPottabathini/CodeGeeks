@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class DBConnection {
 	
 //	private static String dbhost = "jdbc:mysql://192.168.1.225:3306/stock";
-	private static String dbhost = "jdbc:mysql://localhost:3306/sports_event";
+	private static String dbhost = "jdbc:mysql://127.0.0.1:3306/sports_event";
 	private static String username = "root";
 //	private static String password = "password";
 	private static String password = "root";

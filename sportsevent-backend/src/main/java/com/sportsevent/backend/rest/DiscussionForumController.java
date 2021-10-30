@@ -21,7 +21,7 @@ import com.sportsevent.backend.service.DiscussionForumService;
 import com.sportsevent.backend.service.EventService;
 import com.sportsevent.backend.service.UserService;
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("/forum/discussions")
 public class DiscussionForumController {
@@ -33,12 +33,12 @@ public class DiscussionForumController {
 		this.discussionForumService = discussionForumService;
 	}
 	
-	@GetMapping(value = "/getallmessages")
+	@GetMapping()
 	ResponseEntity<List<Message>> getMessages(){
 		return ResponseEntity.status(HttpStatus.OK).body(discussionForumService.getMessages());
 	}
 	
-	@PostMapping(value = "/saveMessage")
+	@PostMapping()
 	ResponseEntity<Boolean> saveMessage(@RequestBody Message message){
 		return ResponseEntity.status(HttpStatus.OK).body(discussionForumService.saveMessage(message));
 	}

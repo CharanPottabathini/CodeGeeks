@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -48,7 +51,7 @@ public class DiscussionForumServiceImpl implements DiscussionForumService{
 				String id = resultSet.getString("id");
 				String text = resultSet.getString("text");
 				String userId = resultSet.getString("user_id");
-				Date time = resultSet.getDate("time");
+				String time = resultSet.getString("time");
 				Message message = new Message();
 				message.setId(id);
 				message.setText(text);
@@ -74,11 +77,12 @@ public class DiscussionForumServiceImpl implements DiscussionForumService{
 				id = rs.getInt(1);
 			}
 			
-			String insertQuery = "INSERT INTO message (id,text,user_id,time) VALUES (?,?,?,CURRENT_TIMESTAMP)";
+			String insertQuery = "INSERT INTO message (id,text,user_id,time) VALUES (?,?,?,?)";
 			PreparedStatement insertStatement = sportsEventComponent.getConnection().prepareStatement(insertQuery);
 			insertStatement.setString(1, String.valueOf(id+1));
 			insertStatement.setString(2, message.getText());
 			insertStatement.setString(3, message.getUserId());
+			insertStatement.setString(4, message.getTime());
 			insertStatement.execute();
 			return true;
 		} catch (SQLException e) {

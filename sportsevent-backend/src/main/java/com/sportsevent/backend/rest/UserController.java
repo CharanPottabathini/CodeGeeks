@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sportsevent.backend.entity.User;
 import com.sportsevent.backend.service.UserService;
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -29,13 +29,16 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/login")
-	ResponseEntity<Boolean> verifyUser(@RequestBody User user){
+    public ResponseEntity<Map> verifyUser(@RequestBody User user){
+System.out.println(user.toString());
 		return ResponseEntity.status(HttpStatus.OK).body(userService.login(user));
 	}
-	
+		
 	@PostMapping(value = "/register")
-	ResponseEntity<Boolean> registerUser(@RequestBody User user){
+	public ResponseEntity<Map> registerUser(@RequestBody User user){
 		return ResponseEntity.status(HttpStatus.OK).body(userService.registerUser(user));
 	}
+	
+	
 
 }

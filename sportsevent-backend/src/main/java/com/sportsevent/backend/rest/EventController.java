@@ -1,8 +1,10 @@
 package com.sportsevent.backend.rest;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import com.sportsevent.backend.entity.CreateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import com.sportsevent.backend.entity.User;
 import com.sportsevent.backend.service.EventService;
 import com.sportsevent.backend.service.UserService;
 
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("/sports")
 public class EventController {
@@ -31,14 +33,14 @@ public class EventController {
 		this.eventService = eventService;
 	}
 	
-	@GetMapping(value = "/events/ongoing")
-	ResponseEntity<List<Event>> verifyOngoingEvents(){
+	@GetMapping(value = "/events")
+	ResponseEntity<List<Event>> getEvents(){
 		return ResponseEntity.status(HttpStatus.OK).body(eventService.getEventDetails());
 	}
 
-	@GetMapping(value = "/events/upcoming")
-	ResponseEntity<List<Event>> verifyUpcomingEvents(){
-		return ResponseEntity.status(HttpStatus.OK).body(eventService.getUpcomingEventDetails());
+	@PostMapping(value = "/createevents")
+	public ResponseEntity<Map> createEvent(@RequestBody CreateEvent createEvent) throws SQLException {
+		System.out.println(createEvent);
+		return ResponseEntity.status(HttpStatus.OK).body(eventService.createEvent(createEvent));
 	}
-
 }

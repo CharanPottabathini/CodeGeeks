@@ -32,11 +32,13 @@ public class EventController {
 	public EventController(EventService eventService) {
 		this.eventService = eventService;
 	}
-	
+
+	//used to get events from db to ui
 	@GetMapping(value = "/events")
 	ResponseEntity<List<Event>> getEvents(){
 		return ResponseEntity.status(HttpStatus.OK).body(eventService.getEventDetails());
 	}
+	//used to create events
 
 	@PostMapping(value = "/createevents")
 	public ResponseEntity<Map> createEvent(@RequestBody CreateEvent createEvent) throws SQLException {

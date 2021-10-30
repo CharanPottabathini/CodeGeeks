@@ -27,13 +27,14 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
+	//used for login into the application
 	@PostMapping(value = "/login")
     public ResponseEntity<Map> verifyUser(@RequestBody User user){
 System.out.println(user.toString());
 		return ResponseEntity.status(HttpStatus.OK).body(userService.login(user));
 	}
-		
+		//used for registering the application
 	@PostMapping(value = "/register")
 	public ResponseEntity<Map> registerUser(@RequestBody User user){
 		return ResponseEntity.status(HttpStatus.OK).body(userService.registerUser(user));

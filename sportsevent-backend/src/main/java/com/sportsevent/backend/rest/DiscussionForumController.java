@@ -32,12 +32,12 @@ public class DiscussionForumController {
 	public DiscussionForumController(DiscussionForumService discussionForumService) {
 		this.discussionForumService = discussionForumService;
 	}
-	
+	//Used to get the messages from the db to display in ui
 	@GetMapping()
 	ResponseEntity<List<Message>> getMessages(){
 		return ResponseEntity.status(HttpStatus.OK).body(discussionForumService.getMessages());
 	}
-	
+	 // used to save the message in the database from the ui
 	@PostMapping()
 	ResponseEntity<Boolean> saveMessage(@RequestBody Message message){
 		return ResponseEntity.status(HttpStatus.OK).body(discussionForumService.saveMessage(message));

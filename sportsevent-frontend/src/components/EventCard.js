@@ -100,7 +100,7 @@ class EventCard extends React.Component {
     </CardActions>
   </Card>:
   <div style={{'margin-top': 36}}>
-    <Button style={{'padding':1,'margin-bottom':6,backgroundColor:'cadetblue'}} onClick={this.handleBack}>Back</Button>
+    <Button style={{'padding':1,'marginBottom':6,backgroundColor:'cadetblue'}} onClick={this.handleBack}>Back</Button>
   <TableContainer component={Paper}>
   <Table aria-label="customized table">
     <TableHead>

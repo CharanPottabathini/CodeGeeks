@@ -85,7 +85,7 @@ class UpcomingEvents extends React.Component {
          <EventCard eventDetails={data} isDisplayCard={this.handleDisplayValue}/>:''
         ))}</div>:
         <div style={{'margin-top': 36}}>
-    <Button style={{'padding':1,'margin-bottom':6,'backgroundColor':'cadetblue'}} onClick={this.handleBack}>Back</Button>
+    <Button style={{'padding':1,'marginBottom':6,'backgroundColor':'cadetblue'}} onClick={this.handleBack}>Back</Button>
     {newEventDetails.participants.length>0 ?
            <TableContainer component={Paper}>
   <Table aria-label="customized table">

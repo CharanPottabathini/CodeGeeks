@@ -94,10 +94,10 @@ class CreateEvent extends React.Component {
             }
             if(!res.data.isEventCreated){
                 this.setState({
-                    signupErrorMessage:res.data.error,
+                    signupErrorMessage:res.data.message,
                     shouldErrorMessageDisplay:true
                 })
-                alert("Event has not been created please re enter the date "+res.data.error)
+                alert("Event has not been created please re enter the date ")
             }
         });
     };

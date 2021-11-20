@@ -13,7 +13,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
+import axios from "axios";
+import JoinEvent from "./JoinEvent";
+import OngoingEvents from "./OngoingEvents";
+const joineventBaseUrl="http://localhost:8080/sports/joinevent"
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -63,6 +66,31 @@ class EventCardNew extends React.Component {
     handleButtonOnclick=(eventDetailsData)=>{
         this.setState({showCard:false})
         this.props.isDisplayCard(false,eventDetailsData);
+        console.log(eventDetailsData)
+        localStorage.getItem("username")
+        let reqJson={}
+        reqJson = {
+            "id": "0",
+            "name":localStorage.getItem("username"),
+            "eventId":eventDetailsData.id
+        }
+console.log(reqJson)
+
+        axios.post(joineventBaseUrl,reqJson).then((res) => {
+            console.log(reqJson)
+
+            if(res.data.isParticipantJoined){
+                alert("joined the event succesfully  "+res.data.message);
+                <OngoingEvents/>
+            }
+
+            if(!res.data.isParticipantJoined){
+                alert("cannnot join the event succesfully  "+res.data.message);
+            }
+
+
+        });
+
 
     }
     handleBack=()=>{
@@ -96,11 +124,11 @@ class EventCardNew extends React.Component {
 
                         </CardContent>
                         <CardActions style={{backgroundColor:'lavender',justifyContent:'center'}}>
-                            <Button size="small" style={{backgroundColor:'cadetblue'}}onClick={e=>this.handleButtonOnclick(eventDetailsData)}>View Participants</Button>
+                            <Button size="small" style={{backgroundColor:'cadetblue'}}onClick={e=>this.handleButtonOnclick(eventDetailsData)}>Join Event</Button>
                         </CardActions>
                     </Card>:
                     <div style={{'margin-top': 36}}>
-                        <Button style={{'padding':1,'margin-bottom':6,backgroundColor:'cadetblue'}} onClick={this.handleBack}>Back</Button>
+                        <Button style={{'padding':1,'marginBottom':6,backgroundColor:'cadetblue'}} onClick={this.handleBack}>Back</Button>
                         <TableContainer component={Paper}>
                             <Table aria-label="customized table">
                                 <TableHead>

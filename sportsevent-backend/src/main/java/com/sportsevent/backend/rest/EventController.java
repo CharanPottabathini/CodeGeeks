@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sportsevent.backend.entity.CreateEvent;
+import com.sportsevent.backend.entity.Participant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +46,12 @@ public class EventController {
 		System.out.println(createEvent);
 		return ResponseEntity.status(HttpStatus.OK).body(eventService.createEvent(createEvent));
 	}
+
+	@PostMapping(value = "/joinevent")
+	public ResponseEntity<Map> createEvent(@RequestBody Participant participant) throws SQLException {
+		System.out.println(participant);
+		return ResponseEntity.status(HttpStatus.OK).body(eventService.joinEvent(participant));
+	}
+
+
 }

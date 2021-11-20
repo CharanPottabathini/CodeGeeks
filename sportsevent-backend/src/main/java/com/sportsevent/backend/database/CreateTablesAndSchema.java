@@ -8,16 +8,41 @@ import java.sql.SQLException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class CreateTablesAndSchema {
-	
+
+	// Function to find and print pair
+	static int  chkPair(int A[], int size, int x) {
+		int count =0;
+		for (int i = 0; i < (size - 1); i++) {
+			for (int j = (i + 1); j < size; j++) {
+				if (A[i] + A[j] == x) {
+					System.out.println("Pair with a given sum " + x +
+							" is (" + A[i] + ", " + A[j] + ")");
+
+
+					count++;
+				}
+			}
+		}
+		return count;
+
+	}
+
+
 	public static void main(String[] args) {
 		try(Connection conn = createNewDBconnection()){
 			createSchemaAndTables(conn);
 			System.out.println("Tables and schema created");
 		}catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		}
+
+int i=1;
+				int j=1;
+				System.out.println(i==j);
+				System.out.println("To");
+
 	}
-	
+
 	private static void createSchemaAndTables(Connection connection) {
 		try {
 			connection.prepareStatement("DROP SCHEMA if exists sports_event").execute();
@@ -41,13 +66,7 @@ public class CreateTablesAndSchema {
 					"					event_type varchar(150)," +
 					"					Constraint PK Primary Key(id)"+ 
 					")";
-			String createParticipants = "CREATE TABLE sports_event.participant (" + 
-					"					id varchar(25),"+ 
-					"					name varchar(150)," + 
-					"					event_id varchar(25)," +
-					"					Constraint PK Primary Key(id),"+ 
-					"					FOREIGN KEY (event_id) REFERENCES sports_event.event(id)"+
-					")";
+			String createParticipants = new StringBuilder().append("CREATE TABLE sports_event.participant (").append("id varchar(25),").append("name varchar(150),").append("					event_id varchar(25),").append("					Constraint PK Primary Key(id),").append("					FOREIGN KEY (event_id) REFERENCES sports_event.event(id)").append(")").toString();
 			String createMessage = "CREATE TABLE sports_event.message (" + 
 					"					id varchar(25),"+ 
 					"					text varchar(1000)," + 

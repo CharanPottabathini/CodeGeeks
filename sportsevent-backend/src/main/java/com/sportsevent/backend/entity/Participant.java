@@ -24,5 +24,13 @@ public class Participant {
 	public void setEventId(String eventId) {
 		this.eventId = eventId;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Participant{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", eventId='" + eventId + '\'' +
+				'}';
+	}
 }

@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 function App() {
   return (
     <BrowserRouter>
+
       <div className="flex flex-col min-h-screen" >
         <Route path="/" component={Login} exact></Route>
         <Route path="/signup" component={Signup}></Route>

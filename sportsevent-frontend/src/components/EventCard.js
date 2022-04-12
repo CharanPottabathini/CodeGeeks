@@ -37,7 +37,7 @@ const styles = theme => ({
         minWidth: 275,
         marginRight: 64,
     marginTop: 48,
-    backgroundColor:'aliceblue',
+    backgroundColor:'floralwhite',
     borderRadius:30
       },
       bullet: {
@@ -46,7 +46,7 @@ const styles = theme => ({
         transform: 'scale(0.8)',
       },
       title: {
-        fontSize: 14,
+        fontSize: 20,//issue 2
         fontWeight: 700
       },
       pos: {
@@ -95,8 +95,8 @@ class EventCard extends React.Component {
      
      
     </CardContent>
-    <CardActions style={{backgroundColor:'lavender',justifyContent:'center'}}>
-      <Button size="small" style={{backgroundColor:'cadetblue'}}onClick={e=>this.handleButtonOnclick(eventDetailsData)}>View Participants</Button>
+    <CardActions style={{backgroundColor:'floralwhite',justifyContent:'center'}}>
+      <Button size="medium" style={{backgroundColor:'floralwhite' ,font:'inherit'}}onClick={e=>this.handleButtonOnclick(eventDetailsData)}><b>View Participants</b></Button>
     </CardActions>
   </Card>:
   <div style={{'margin-top': 36}}>

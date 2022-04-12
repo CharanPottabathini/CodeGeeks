@@ -54,14 +54,93 @@ li.page-item:nth-child(3){
   .myDiv{
       opacity: 0.5;
   }
+.slidershow {
+    background-image:
+            url(
+            "https://ibb.co/6WJNzGC");
+    height: 100vh;
+    margin-top: -70px;
+    font-size:50px;
+    background-repeat:no-repeat;
+}
+.aboutus
+{
+    margin: auto 10px;
+    width: auto;
+    height: 1000px;
+    background-color: floralwhite;
+    background-image: url("/src/assets/img/teamfinal.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+
+}
 
 /*.justify-center {*/
 /*    background-color: seagreen;*/
 /*}*/
 .MuiTabs-flexContainer{
-   background-color: deeppink;
+   background-color: bisque;
 }
 .SimpleTabs-root-1 {
     flex-grow: 1;
     background-color: aquamarine;
+}
+.createevent
+{
+    margin: auto 10px;
+    width: auto;
+    height: 1500px;
+    background-color: floralwhite;
+    background-image: url("/src/assets/img/cr71.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+.ptag
+{
+    color: black;
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+.aboutustext
+{
+    color: black;
+    font-size: x-large;
+    opacity: 2.5;
+    font-weight: 900;
+}
+.homepage
+{
+    margin: auto 10px;
+    width: auto;
+    height: 1500px;
+    background-color: floralwhite;
+    background-image: url("/src/assets/img/img_2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.info {background-color: #2196F3;}
+
+
+.ptag1
+{
+    color: black;
+    font-size: large;
+    font-weight: 500;
+}
+.loginbutton
+{
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    borderRadius:60px;
+    backgroundSize:"auto";
 }

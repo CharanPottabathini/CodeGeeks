@@ -90,13 +90,14 @@ class CreateEvent extends React.Component {
             if(res.data.isEventCreated)
             {
 
-               alert("Event created ")
+               alert("Event has been created  Successfully")
             }
             if(!res.data.isEventCreated){
                 this.setState({
                     signupErrorMessage:res.data.message,
                     shouldErrorMessageDisplay:true
                 })
+
                 alert("Event has not been created please re enter the date ")
             }
         });
@@ -108,13 +109,17 @@ class CreateEvent extends React.Component {
             this.state;
 
         return (
+            <div className="createevent">
+
             <div className="flex flex-col space-y-5 max-w-md mx-auto my-16 min-w-500">
                 <h2 className="text-4xl font-semibold text-blue-800">Create Event</h2>
+        <p className="ptag">Please select the sports</p>
                 <select    required
                     id="outlined-username"
                     value={name}
                     label="name"
                     autoComplete="off"
+                           
                     onChange={(e) => this.handleEventNameChange(e)}>
 
                 <option value="LongJump">LongJump</option>
@@ -129,7 +134,7 @@ class CreateEvent extends React.Component {
                 <option value="Carroms">Carroms</option>
                     </select>
                 <br></br>
-
+                <p  className="ptag">Please select the location</p>
                 <select required
                         id="outlined-location"
                         value={location}
@@ -194,11 +199,11 @@ class CreateEvent extends React.Component {
 
                 <br></br>
 
-
+                <p  className="ptag">Please select the Time</p>
                 <select  required
                         id="outlined-eventType"
-                        label="eventType"
-                        value={eventType}
+                        label="time"
+                        value={time}
                         type="eventType"
                         onChange={(e) => this.handleTimeChange(e)}>
                     <option value="9am-10am">9am-10am</option>
@@ -215,7 +220,7 @@ class CreateEvent extends React.Component {
                     <option value="8pm-9pm">8pm-9pm</option>
                 </select>
                 <br></br>
-
+                <p  className="ptag">Please select the Date</p>
                 <input type="date" id="birthday" name="birthday"
                        required
                        id="outlined-date"
@@ -231,6 +236,7 @@ class CreateEvent extends React.Component {
                         Submit
                     </Button>
                 </div>
+            </div>
                 {/*{shouldAlertDisplay &&*/}
                 {/*<Alert severity="error">Field cannot be empty</Alert>*/}
                 {/*}*/}

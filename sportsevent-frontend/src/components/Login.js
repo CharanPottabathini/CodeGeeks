@@ -76,19 +76,21 @@ class Login extends React.Component {
   render() {
     const { username, password, shouldAlertDisplay,shouldLoginErrorDisplay } = this.state;
     return (
-      <div className="flex flex-col space-y-5 max-w-md mx-auto my-16 min-w-500">
+        <div className="homepage">
+      <div className="flex flex-col space-y-5 max-w-md mx-auto my-16 min-w-500" >
         <div className="flex items-center justify-between">
           <h2 className="text-4xl font-semibold text-blue-800">Login</h2>
           <div className="flex">
             <p className="text-lg">New User?</p>
             <Link
               to="/signup"
-              className="text-blue-500 font-semibold text-lg px-1"
-            >
+              className="text-blue-900 font-bold text-2xl px-1"
+             >
               Sign up
             </Link>
           </div>
         </div>
+        <p  className="ptag1">Please enter email or mobile no</p>
         <TextField
           value={username}
           required
@@ -96,6 +98,7 @@ class Login extends React.Component {
           label="email or mobile number"
           onChange={(e) => this.handleUsernameChange(e)}
         />
+        <p  className="ptag1">Please enter password</p>
         <TextField
           id="outlined-password-input"
           required
@@ -104,9 +107,13 @@ class Login extends React.Component {
           value={password}
           onChange={(e) => this.handlePasswordChange(e)}
         />
-        <Button  style={{borderRadius:'16px'}} variant="contained" onClick={this.handleLogin}>
+        <Button  style={{borderRadius:'50%', padding: '10px 24px',backgroundSize:"auto"}} variant="contained" onClick={this.handleLogin}>
           Login
         </Button>
+
+
+
+
 
         {shouldAlertDisplay && (
           <Alert severity="error">Field cannot be empty</Alert>
@@ -115,6 +122,7 @@ class Login extends React.Component {
           <Alert severity="error">Invalid username or password</Alert>
         )}
       </div>
+        </div>
     );
   }
 }

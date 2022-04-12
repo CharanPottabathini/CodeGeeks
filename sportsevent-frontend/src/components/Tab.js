@@ -16,6 +16,7 @@ const styles = theme => ({
     flexGrow: 1,
     //backgroundColor: theme.palette.background.paper,
     backgroundColor: theme.palette.background.paper,
+
   }
 });
 
@@ -36,7 +37,7 @@ class SimpleTabs extends React.Component {
       <div className={classes.root}  >
         <AppBar position="static">
           <Tabs className={classes.root} value={value} onChange={this.handleChange} centered textColor="primary" indicatorColor="primary">
-            <Tab  label="Ongoing Events" href="#Ongoing Events"/>
+            <Tab  label="Ongoing Events" href="#Ongoing Events" />
             <Tab  label="Upcoming Events" href="#Upcoming Events"/>
             <Tab label="Join Event" href="#Join Event" />
             <Tab label="Discussion Forum" href="#Discussion Forum" />

@@ -49,7 +49,7 @@ const styles = theme => ({
         transform: 'scale(0.8)',
     },
     title: {
-        fontSize: 14,
+        fontSize: 20,//issue2
         fontWeight: 700
     },
     pos: {
@@ -80,12 +80,12 @@ console.log(reqJson)
             console.log(reqJson)
 
             if(res.data.isParticipantJoined){
-                alert("joined the event succesfully  "+res.data.message);
+                alert("joined the event succesfully");
                 <OngoingEvents/>
             }
 
             if(!res.data.isParticipantJoined){
-                alert("cannnot join the event succesfully  "+res.data.message);
+                alert(res.data.message);
             }
 
 

@@ -109,6 +109,7 @@ class Signup extends React.Component {
       this.state;
       
     return (
+        <div className="homepage">
       <div className="flex flex-col space-y-5 max-w-md mx-auto my-16 min-w-500">
         <h2 className="text-4xl font-semibold text-blue-800">Signup</h2>
         <TextField
@@ -162,7 +163,7 @@ class Signup extends React.Component {
          {shouldErrorMessageDisplay &&
           <Alert severity="error"> {signupErrorMessage} </Alert>
         }
-        
+      </div>
       </div>
     );
   }
